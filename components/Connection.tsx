@@ -145,7 +145,7 @@ export default function Connection() {
               </svg>
             </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-8 mt-12">
+            <div className="grid md:grid-cols-3 gap-8 mt-12 ">
               {[
                 {
                   title: "Match & Connect",
@@ -168,8 +168,8 @@ export default function Connection() {
               ].map((item, index) => (
                 <motion.div
                   key={index}
-                  variants={fadeInUp}
-                  className={`${item.color} p-6 rounded-xl border-3 border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:translate-y-[-5px] transition-transform duration-300`}
+                 
+                  className={`${item.color} p-6 transform rounded-xl border-3 border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:translate-y-[-5px] transition-transform duration-300 hover:scale-105`}
                 >
                   <h3 className="text-xl font-bold mb-2">{item.title}</h3>
                   <p>{item.description}</p>

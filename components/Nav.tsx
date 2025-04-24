@@ -10,16 +10,13 @@ import {
 } from "lucide-react";
 
 export default function Navbar() {
-    const scrollYProgress = useScroll();
+    
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
       <>
         <div className="bg-pink-50">
-          <motion.div
-            className="fixed top-0 left-0 right-0 h-1 bg-pink-500 z-50 origin-left"
-            style={{ scaleX: scrollYProgress }}
-          />
+         
 
           {/* Sticky Navbar */}
           <header className="sticky top-0 z-50 bg-pink-100/90 backdrop-blur-md border-b-2 border-black px-4 py-4 flex justify-between items-center md:px-10 shadow-md">
