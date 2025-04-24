@@ -4,7 +4,7 @@ import Navbar from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Connection from "@/components/Connection";
 
-
+import Feauterdcards from "@/components/Feauterdcards";
 
 export default function Home() {
   
@@ -17,6 +17,7 @@ export default function Home() {
           <Navbar />
           <Hero />
           <Connection />
+          <Feauterdcards />
         </div>
       </div>
     </>
