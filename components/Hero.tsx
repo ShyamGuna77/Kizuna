@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -108,23 +108,32 @@ const Hero = () => {
                 <h4 className="font-bold text-xl mt-4 mb-3">Your Dates</h4>
                 <div className="grid grid-cols-2 gap-3">
                   {[
-                    { color: "bg-red-100", name: "Carolin Sky" },
-                    { color: "bg-pink-200", name: "Emma Lee" },
+                    {
+                      img: "https://plus.unsplash.com/premium_photo-1668896122605-debd3fed81a4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                      name: "Neysaa",
+                    },
+                    {
+                      img: "https://images.unsplash.com/photo-1735854393259-9f020d961ce3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Z29vZCUyMGxvb2tpbmclMjB0ZWVuJTIwZ2lybHxlbnwwfHwwfHx8MA%3D%3D",
+                      name: "Emma Lee",
+                    },
                   ].map((profile, i) => (
                     <div
                       key={i}
-                      className={`${profile.color} p-3 rounded-xl border-2 border-black`}
+                      className="p-3 rounded-xl border-2 border-black"
                     >
                       <div className="w-full aspect-square rounded-lg bg-white border-2 border-black overflow-hidden mb-2 flex items-center justify-center">
-                        <Heart
-                          className="h-10 w-10 text-pink-400"
-                          fill="#f472b6"
+                        <Image
+                          src={profile.img}
+                          alt={profile.name}
+                          width={100}
+                          height={100}
+                          className="object-cover"
                         />
                       </div>
                       <p className="font-bold">{profile.name}, 29</p>
                       <div className="flex items-center text-sm">
                         <div className="w-3 h-3 bg-pink-500 rounded-full mr-1"></div>
-                        <span>Indonesia</span>
+                        <span>USA</span>
                       </div>
                     </div>
                   ))}
@@ -148,7 +157,6 @@ const Hero = () => {
 };
 
 export default Hero;
-
 
 const images = [
   {
