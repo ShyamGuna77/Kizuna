@@ -1,6 +1,6 @@
 
 "use client"
-import Navbar from "@/components/Nav";
+
 import Hero from "@/components/Hero";
 import Connection from "@/components/Connection";
 import HowitWorks from "@/components/How-it-works";
@@ -17,7 +17,7 @@ export default function Home() {
       <div>
         
         <div className="bg-pink-100">
-          <Navbar />
+        
           <Hero />
           <Connection />
           <Feauterdcards />

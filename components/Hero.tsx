@@ -61,7 +61,7 @@ const Hero = () => {
                   alt={`Profile ${i}`}
                   width={40}
                   height={40}
-                  className="object-cover w-full h-full"
+                  className="object-cover object-top w-full h-full"
                 />
               </div>
             ))}
@@ -113,11 +113,11 @@ const Hero = () => {
                 <div className="grid grid-cols-2 gap-3">
                   {[
                     {
-                      img: "https://plus.unsplash.com/premium_photo-1668896122605-debd3fed81a4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                      img: "https://images.unsplash.com/photo-1647058517574-27dddbe12afc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTB8fGN1dGUlMjB3b21hbiUyMHRlZW58ZW58MHx8MHx8fDA%3D",
                       name: "Nami",
                     },
                     {
-                      img: "https://images.unsplash.com/photo-1735854393259-9f020d961ce3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Z29vZCUyMGxvb2tpbmclMjB0ZWVuJTIwZ2lybHxlbnwwfHwwfHx8MA%3D%3D",
+                      img: "https://plus.unsplash.com/premium_photo-1714195646981-221ce73e0d5f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fGN1dGUlMjB3b21hbiUyMHRlZW58ZW58MHx8MHx8fDA%3D",
                       name: "Sia",
                     },
                   ].map((profile, i) => (
@@ -131,7 +131,7 @@ const Hero = () => {
                           alt={profile.name}
                           width={100}
                           height={100}
-                          className="object-cover"
+                          className="object-cover object-center"
                         />
                       </div>
                       <p className="font-bold">{profile.name}, 29</p>
@@ -169,7 +169,7 @@ const images = [
   },
   {
     id: 2,
-    url: "https://images.unsplash.com/photo-1735854393259-9f020d961ce3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Z29vZCUyMGxvb2tpbmclMjB0ZWVuJTIwZ2lybHxlbnwwfHwwfHx8MA%3D%3D",
+    url: "https://images.unsplash.com/photo-1613397872384-3647751890b8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTZ8fGN1dGUlMjB3b21hbiUyMHRlZW58ZW58MHx8MHx8fDA%3D",
   },
   {
     id: 3,
