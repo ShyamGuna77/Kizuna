@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { usePathname } from "next/navigation"; // ✅ use this instead
+import { usePathname } from "next/navigation"; 
 import { motion } from "motion/react";
 import { Heart, Menu, Users, MessageCircle, List } from "lucide-react";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const pathname = usePathname(); // ✅ this gives you the current path
+  const pathname = usePathname();
 
   const isActive = (path: string) => pathname === path;
 
