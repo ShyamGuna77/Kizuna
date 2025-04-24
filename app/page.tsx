@@ -1,5 +1,6 @@
 import Navbar from "@/components/Nav";
 import Hero from "@/components/Hero";
+import Connection from "@/components/Connection";
 export default function Home() {
   return (
     <>
@@ -7,8 +8,9 @@ export default function Home() {
         <div className="bg-pink-100">
           <Navbar />
           <Hero />
+          <Connection />
         </div>
-        
+
       </div>
     </>
   );
