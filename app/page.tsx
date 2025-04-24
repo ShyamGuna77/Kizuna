@@ -3,7 +3,7 @@
 import Navbar from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Connection from "@/components/Connection";
-
+import HowitWorks from "@/components/How-it-works";
 import Feauterdcards from "@/components/Feauterdcards";
 
 export default function Home() {
@@ -18,6 +18,8 @@ export default function Home() {
           <Hero />
           <Connection />
           <Feauterdcards />
+          <HowitWorks />
+
         </div>
       </div>
     </>
