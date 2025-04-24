@@ -4,6 +4,8 @@ import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
 import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
 import { PiButterflyDuotone } from "react-icons/pi";
+import Link from "next/link";
+
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -154,6 +156,41 @@ const TestimonialSection = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+      </AnimatedSection>
+      <AnimatedSection className="py-16 bg-pink-200">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            variants={fadeInUp}
+            className="max-w-3xl mx-auto bg-white p-8 rounded-xl border-3 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+          >
+            <div className="w-20 h-20 mx-auto bg-pink-300 rounded-full border-2 border-black flex items-center justify-center mb-6">
+              <Heart className="h-10 w-10" fill="#ec4899" />
+
+            </div>
+            <h2 className="text-4xl font-bold mb-6">
+              Ready to Find Your Soulmate?
+            </h2>
+            <p className="text-xl mb-8">
+              Join Kizuna today and start your journey to finding true love
+              with someone who shares your passions and dreams.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="#"
+                className="bg-pink-400 px-8 py-4 rounded-xl border-2 border-black font-semibold text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all text-white"
+              >
+                Find Love Now
+              </Link>
+              <Link
+                href="#"
+                className="bg-red-300 px-8 py-4 rounded-xl border-2 border-black font-semibold text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
+              >
+                Learn More
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </AnimatedSection>
     </>

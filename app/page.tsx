@@ -8,7 +8,7 @@ import Feauterdcards from "@/components/Feauterdcards";
 import Pricing from "@/components/Pricing";
 import AppFeauters from "@/components/AppFeauters";
 import TestimonialSection from "@/components/Testimonal";
-
+import Footer from "@/components/Footer";
 
 export default function Home() {
 
@@ -25,6 +25,7 @@ export default function Home() {
           <Pricing />
           <AppFeauters />
           <TestimonialSection />
+          <Footer />
 
         </div>
       </div>
