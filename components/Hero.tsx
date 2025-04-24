@@ -1,5 +1,5 @@
 "use client"
-
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
@@ -24,7 +24,11 @@ const Hero = () => {
           #1 Dating App of 2025
         </div>
         <h2 className="text-4xl md:text-6xl font-bold leading-tight">
-          Find Your <span className="bg-pink-500 text-white px-2 -rotate-2 inline-block">Soulmate</span> Today!
+          Find Your{" "}
+          <span className="bg-pink-500 text-white px-2 -rotate-2 inline-block">
+            Soulmate
+          </span>{" "}
+          Today!
         </h2>
         <p className="text-lg md:text-xl mt-6 mb-8">
           Join thousands of singles looking for true love and meaningful
@@ -85,12 +89,14 @@ const Hero = () => {
               <div className="p-4">
                 <h4 className="font-bold text-xl mb-3">New Matches</h4>
                 <div className="flex gap-2 overflow-x-auto pb-2">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="flex-shrink-0">
-                      <div className="w-16 h-16 rounded-full bg-pink-200 border-2 border-black overflow-hidden flex items-center justify-center">
-                        <Heart
-                          className="h-8 w-8 text-pink-500"
-                          fill="#ec4899"
+                  {images.map((img) => (
+                    <div key={img.id} className="flex-shrink-0">
+                      <div className="w-16 h-16 rounded-full bg-pink-200 border-2 border-black overflow-hidden flex items-center justify-center relative">
+                        <Image
+                          src={img.url}
+                          alt={`Image ${img.id}`}
+                          fill
+                          className="object-cover"
                         />
                       </div>
                     </div>
@@ -142,3 +148,19 @@ const Hero = () => {
 };
 
 export default Hero;
+
+
+const images = [
+  {
+    id: 1,
+    url: "https://plus.unsplash.com/premium_photo-1668896122605-debd3fed81a4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 2,
+    url: "https://images.unsplash.com/photo-1735854393259-9f020d961ce3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Z29vZCUyMGxvb2tpbmclMjB0ZWVuJTIwZ2lybHxlbnwwfHwwfHx8MA%3D%3D",
+  },
+  {
+    id: 3,
+    url: "https://plus.unsplash.com/premium_photo-1668896123841-2ddfc6c6e8da?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGdvb2QlMjBsb29raW5nJTIwdGVlbiUyMGdpcmx8ZW58MHx8MHx8fDA%3D",
+  },
+];
