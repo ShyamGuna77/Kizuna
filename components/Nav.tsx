@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useScroll, motion } from "motion/react";
+import {  motion } from "motion/react";
 
 import {
     Heart,
