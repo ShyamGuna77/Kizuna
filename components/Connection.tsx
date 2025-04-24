@@ -33,49 +33,51 @@ export default function Connection() {
 
             <motion.div
               variants={fadeInUp}
-              className="relative max-w-4xl mx-auto h-[400px] md:h-[500px]"
+              className="relative max-w-5xl mx-auto h-[450px] sm:h-[500px] md:h-[550px] lg:h-[600px]"
             >
-            
-              <div className="absolute left-0 bottom-12 md:bottom-16 w-1/3 h-full flex items-end justify-center">
+              {/* Left Person (Female) */}
+              <div className="absolute left-0 bottom-20 md:bottom-24 w-1/3 md:w-2/5 h-full flex items-end justify-center">
                 <Image
                   src={FemaleChat}
                   alt="Female chatting Svg"
-                  className="object-contain"
+                  className="object-contain w-full md:w-4/5 lg:w-full max-h-full"
+                  priority
                 />
               </div>
 
-              
-              <div className="absolute left-1/2 top-1/3 transform -translate-x-1/2 -translate-y-1/2 w-1/4">
+              {/* Center Heart */}
+              <div className="absolute left-1/2 top-1/4 transform -translate-x-1/2 w-1/4 md:w-1/5 z-10">
                 <Image
                   src={Heart}
                   alt="Heart pic"
-                  className="object-contain mx-auto"
+                  className="object-contain mx-auto w-full"
+                  priority
                 />
               </div>
 
-             
-              <div className="absolute right-0 bottom-12 md:bottom-16 w-1/3 h-full flex items-end justify-center">
+              {/* Right Person (Male) */}
+              <div className="absolute right-0 bottom-20 md:bottom-24 w-1/3 md:w-2/5 h-full flex items-end justify-center">
                 <Image
                   src={MaleChat}
                   alt="Male chatting"
-                  className="object-contain"
+                  className="object-contain w-full md:w-4/5 lg:w-full max-h-full"
+                  priority
                 />
               </div>
 
-          
+              {/* Message Lines with Animation */}
               <svg
-                className="absolute inset-0 w-full h-full"
+                className="absolute inset-0 w-full h-full z-0"
                 viewBox="0 0 800 500"
                 preserveAspectRatio="none"
-                style={{ zIndex: -1 }}
               >
-               
+                {/* Path from Female to before Heart */}
                 <path
-                  d="M200,200 Q300,150 400,167"
+                  d="M200,200 Q300,150 350,160"
                   fill="none"
                   stroke="#F472B6"
-                  strokeWidth="3"
-                  strokeDasharray="10,5"
+                  strokeWidth="1.5"
+                  strokeDasharray="15,8"
                   strokeLinecap="round"
                 >
                   <animate
@@ -87,13 +89,13 @@ export default function Connection() {
                   />
                 </path>
 
-                
+                {/* Path from after Heart to Male */}
                 <path
-                  d="M400,167 Q500,150 600,200"
+                  d="M450,160 Q500,150 600,200"
                   fill="none"
                   stroke="#F472B6"
-                  strokeWidth="3"
-                  strokeDasharray="10,5"
+                  strokeWidth="1.5"
+                  strokeDasharray="15,8"
                   strokeLinecap="round"
                 >
                   <animate
@@ -105,12 +107,13 @@ export default function Connection() {
                   />
                 </path>
 
+                {/* Path from Male to before Heart */}
                 <path
-                  d="M600,240 Q500,290 400,250"
+                  d="M600,240 Q500,290 450,260"
                   fill="none"
                   stroke="#EC4899"
-                  strokeWidth="3"
-                  strokeDasharray="10,5"
+                  strokeWidth="1.5"
+                  strokeDasharray="15,8"
                   strokeLinecap="round"
                 >
                   <animate
@@ -122,13 +125,13 @@ export default function Connection() {
                   />
                 </path>
 
-                
+                {/* Path from after Heart to Female */}
                 <path
-                  d="M400,250 Q300,290 200,240"
+                  d="M350,260 Q300,290 200,240"
                   fill="none"
                   stroke="#EC4899"
-                  strokeWidth="3"
-                  strokeDasharray="10,5"
+                  strokeWidth="1.5"
+                  strokeDasharray="15,8"
                   strokeLinecap="round"
                 >
                   <animate
@@ -139,24 +142,6 @@ export default function Connection() {
                     repeatCount="indefinite"
                   />
                 </path>
-
-                
-                <circle r="5" fill="#F9A8D4">
-                  <animateMotion
-                    path="M200,200 Q300,150 400,167"
-                    dur="2s"
-                    repeatCount="indefinite"
-                  />
-                </circle>
-
-                
-                <circle r="5" fill="#F9A8D4">
-                  <animateMotion
-                    path="M600,240 Q500,290 400,250"
-                    dur="2s"
-                    repeatCount="indefinite"
-                  />
-                </circle>
               </svg>
             </motion.div>
 
