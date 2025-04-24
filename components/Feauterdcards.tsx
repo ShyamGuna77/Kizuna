@@ -72,7 +72,7 @@ const Feauterdcards = () => {
                       height={80}
                       className="object-cover object-top w-full h-full"
                     />
-                    {/* <div className="w-20 h-20 rounded-full bg-pink-100 flex items-center justify-center"></div> */}
+                    
                   </div>
                   <div className="absolute -bottom-3 -right-3 bg-white p-2 rounded-lg border-2 border-black">
                     <Heart className="h-5 w-5 text-pink-500" fill="#ec4899" />

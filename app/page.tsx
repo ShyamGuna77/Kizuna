@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import Connection from "@/components/Connection";
 import HowitWorks from "@/components/How-it-works";
 import Feauterdcards from "@/components/Feauterdcards";
+import Pricing from "@/components/Pricing";
 
 export default function Home() {
   
@@ -19,6 +20,7 @@ export default function Home() {
           <Connection />
           <Feauterdcards />
           <HowitWorks />
+          <Pricing />
 
         </div>
       </div>
