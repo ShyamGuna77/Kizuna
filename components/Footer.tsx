@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link';
 import { Heart } from 'lucide-react';
-import { Instagram,Youtube,Twitter ,Facebook} from 'lucide-react';
+import { Instagram,Youtube,Twitter ,Facebook,Mail} from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -13,11 +13,11 @@ const Footer = () => {
               <div className="bg-pink-400 p-3 rounded-xl border-2 border-black">
                 <Heart className="h-6 w-6 text-white" fill="white" />
               </div>
-              <h1 className="text-2xl font-bold ml-3">LoveMatch</h1>
+              <h1 className="text-2xl font-bold ml-3">Kizuna</h1>
             </div>
             <p className="mb-4">
               Connecting hearts and creating meaningful relationships since
-              2023. Our mission is to help people find true love.
+              2025. Our mission is to help people find true love.
             </p>
             <div className="flex space-x-4">
               <Link
