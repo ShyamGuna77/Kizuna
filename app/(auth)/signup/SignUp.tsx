@@ -5,14 +5,17 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import { useForm } from 'react-hook-form';
 import { RegisterSchema,registerSchema } from '@/lib/schemas/RegisterSchema';
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useAuth } from '@/app/hooks/useAuth';
+import Link from 'next/link';
 
 const SignUp = () => {
+   const { register: registerUser, isLoading, error } = useAuth();
     const {register,handleSubmit,formState:{errors}} = useForm<RegisterSchema>({
         resolver:zodResolver(registerSchema),
         mode:'onTouched'
     })
-    const onSubmit = (data:RegisterSchema) => {
-        console.log(data)
+    const onSubmit = async (data:RegisterSchema) => {
+      await registerUser(data.name,data.email,data.password)
     }
   return (
     <main className="min-h-screen bg-pink-50 flex items-center justify-center p-6">
@@ -20,6 +23,11 @@ const SignUp = () => {
         <h1 className="text-3xl font-bold mb-6 text-center">
           Create Account 💘
         </h1>
+        {error && (
+          <div className="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+            {error}
+          </div>
+        )}
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
@@ -31,9 +39,7 @@ const SignUp = () => {
               {...register("name")}
             />
             {errors.name && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.name.message}
-              </p>
+              <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
             )}
           </div>
 
@@ -70,8 +76,9 @@ const SignUp = () => {
           <button
             type="submit"
             className="w-full bg-pink-400 text-white font-bold py-2 px-4 border-2 border-black rounded-lg shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-all"
+            disabled={isLoading}
           >
-            Sign Up
+            {isLoading ? "Creating account..." : "Sign up"}
           </button>
         </form>
 
@@ -88,12 +95,12 @@ const SignUp = () => {
 
         <p className="text-center mt-4 text-sm">
           Already have an account?{" "}
-          <a
+          <Link
             href="/login"
             className="underline font-bold hover:text-pink-400 transition-colors"
           >
             Log In
-          </a>
+          </Link>
         </p>
       </div>
     </main>
