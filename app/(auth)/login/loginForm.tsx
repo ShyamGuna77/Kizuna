@@ -6,18 +6,31 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { LoginSchema,loginSchema } from "@/lib/schemas/loginSchema";
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useAuth } from "@/app/hooks/useAuth";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
+
 const LoginForm = () => {
+   const { login, isLoading, error } = useAuth();
+    const searchParams = useSearchParams();
+    const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
     const { register, handleSubmit,formState:{errors} } = useForm<LoginSchema>({
       resolver:zodResolver(loginSchema),
       mode:'onTouched'
     });
-    const onSubmit = (data:LoginSchema) => {
-        console.log(data)
+    const onSubmit = async (data:LoginSchema) => {
+        await login(data.email,data.password,callbackUrl)
     }
   return (
     <main className="min-h-screen bg-pink-50 flex items-center justify-center p-6">
       <div className="bg-white border-2 border-black p-8 rounded-xl shadow-[4px_4px_0px_rgba(0,0,0,1)] w-full max-w-md">
         <h1 className="text-3xl font-bold mb-6 text-center">Welcome Back 💖</h1>
+
+        {error && (
+          <div className="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+            {error}
+          </div>
+        )}
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
@@ -35,7 +48,6 @@ const LoginForm = () => {
             )}
           </div>
 
-        
           <div>
             <label className="block font-semibold mb-1 text-sm">Password</label>
             <Input
@@ -54,8 +66,9 @@ const LoginForm = () => {
           <button
             type="submit"
             className="w-full bg-pink-400 text-white font-bold py-2 px-4 border-2 border-black rounded-lg shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-all"
+            disabled={isLoading}
           >
-            Log In
+            {isLoading ? "Signing in..." : "Log in"}
           </button>
         </form>
 
@@ -70,12 +83,12 @@ const LoginForm = () => {
 
         <p className="text-center mt-4 text-sm">
           Don’t have an account?{" "}
-          <a
+          <Link
             href="/signup"
             className="underline font-bold hover:text-pink-400 transition-colors"
           >
             Sign up
-          </a>
+          </Link>
         </p>
       </div>
     </main>
