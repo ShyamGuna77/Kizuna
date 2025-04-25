@@ -1,19 +1,13 @@
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import { compare } from "bcryptjs";
-import NextAuth, { type NextAuthOptions } from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import { prisma } from "@/lib/prisma"; 
+// auth.ts (in the root of your project)
 
-export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma),
-  session: {
-    strategy: "jwt",
-    maxAge: 30 * 24 * 60 * 60, 
-  },
-  pages: {
-    signIn: "/login",
-    newUser: "/signup",
-  },
+import { auth } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { prisma } from "@/lib/prisma";
+import { compare } from "bcryptjs";
+
+export const {
+  handlers: { GET, POST },
+} = auth({
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -51,8 +45,11 @@ export const authOptions: NextAuthOptions = {
         };
       },
     }),
-    
   ],
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60,
+  },
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
@@ -70,7 +67,4 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
-};
-
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+});

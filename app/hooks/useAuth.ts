@@ -15,8 +15,8 @@ export function useAuth() {
   const login = async (
     email: string,
     password: string,
-    callbackUrl?: string
-  ) => {
+    callbackUrl: string = "/dashboard"
+  ): Promise<boolean> => {
     try {
       setLoading(true);
       setError(null);
@@ -36,14 +36,18 @@ export function useAuth() {
       return true;
     } catch (error) {
       setError("An unexpected error occurred");
-        console.log(error, "insidee signin useAuth");
+      console.error(error, "Error during login in useAuth");
       return false;
     } finally {
       setLoading(false);
     }
   };
 
-  const register = async (name: string, email: string, password: string) => {
+  const register = async (
+    name: string,
+    email: string,
+    password: string
+  ): Promise<boolean> => {
     try {
       setLoading(true);
       setError(null);
@@ -54,23 +58,33 @@ export function useAuth() {
         body: JSON.stringify({ name, email, password }),
       });
 
+      const contentType = response.headers.get("content-type");
+
+     
+      if (!contentType || !contentType.includes("application/json")) {
+        const text = await response.text();
+        console.error("Server returned HTML instead of JSON:", text);
+        setError("Unexpected server response from register API");
+        return false;
+      }
+
       const data = await response.json();
 
       if (!response.ok) {
         setError(data.error || "Registration failed");
         return false;
       }
-
-      
+      console.error(error, "Error during registration in useAuth");
       return await login(email, password);
     } catch (error) {
       setError("An unexpected error occurred");
-      console.log(error,"insidee login useAuth")
+      console.error(error, "inside register useAuth");
       return false;
     } finally {
       setLoading(false);
     }
   };
+
 
   const logout = async () => {
     await signOut({ redirect: false });
@@ -78,11 +92,10 @@ export function useAuth() {
   };
 
   return {
-    session,
+    isAdmin: session?.user?.role === "admin" || false,
     status,
     isAuthenticated: !!session,
     isLoading: status === "loading" || loading,
-    isAdmin: session?.user?.role === "admin",
     login,
     register,
     logout,
