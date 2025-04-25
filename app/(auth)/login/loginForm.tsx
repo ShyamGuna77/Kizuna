@@ -1,13 +1,17 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 
 "use client"
 
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
-
+import { LoginSchema,loginSchema } from "@/lib/schemas/loginSchema";
+import { zodResolver } from '@hookform/resolvers/zod'
 const LoginForm = () => {
-    const { register, handleSubmit,formState:{errors,isValid} } = useForm();
-    const onSubmit = (data:any) => {
+    const { register, handleSubmit,formState:{errors} } = useForm<LoginSchema>({
+      resolver:zodResolver(loginSchema),
+      mode:'onTouched'
+    });
+    const onSubmit = (data:LoginSchema) => {
         console.log(data)
     }
   return (
@@ -22,11 +26,11 @@ const LoginForm = () => {
               type="email"
               placeholder="you@example.com"
               className="w-full"
-              {...register("email", { required: "Email is required" })}
+              {...register("email")}
             />
             {errors.email && (
               <p className="text-red-500 text-sm mt-1">
-                {errors.email.message as string}
+                {errors.email.message}
               </p>
             )}
           </div>
@@ -38,13 +42,7 @@ const LoginForm = () => {
               type="password"
               placeholder="••••••••"
               className="w-full"
-              {...register("password", {
-                required: "Password is required",
-                minLength: {
-                  value: 6,
-                  message: "Password must be at least 6 characters",
-                },
-              })}
+              {...register("password")}
             />
             {errors.password && (
               <p className="text-red-500 text-sm mt-1">
