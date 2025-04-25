@@ -2,7 +2,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { compare } from "bcryptjs";
 import NextAuth, { type NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { prisma } from "@/lib/prisma"; // Create this file to export your Prisma client
+import { prisma } from "@/lib/prisma"; 
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
