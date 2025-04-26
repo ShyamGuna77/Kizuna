@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Nav";
-import AuthContext from "./context/AuthContext";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         <Navbar />
 
-        <AuthContext>{children}</AuthContext>
+        {children}
       </body>
     </html>
   );

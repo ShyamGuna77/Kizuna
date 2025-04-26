@@ -5,17 +5,17 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import { useForm } from 'react-hook-form';
 import { RegisterSchema,registerSchema } from '@/lib/schemas/RegisterSchema';
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useAuth } from '@/app/hooks/useAuth';
+
 import Link from 'next/link';
 
 const SignUp = () => {
-   const { register: registerUser, isLoading, error } = useAuth();
-    const {register,handleSubmit,formState:{errors}} = useForm<RegisterSchema>({
+  
+    const {register,handleSubmit,formState:{errors,isLoading}} = useForm<RegisterSchema>({
         resolver:zodResolver(registerSchema),
         mode:'onTouched'
     })
     const onSubmit = async (data:RegisterSchema) => {
-      await registerUser(data.name,data.email,data.password)
+    console.log(data)
     }
   return (
     <main className="min-h-screen bg-pink-50 flex items-center justify-center p-6">
@@ -23,11 +23,7 @@ const SignUp = () => {
         <h1 className="text-3xl font-bold mb-6 text-center">
           Create Account 💘
         </h1>
-        {error && (
-          <div className="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
-            {error}
-          </div>
-        )}
+       
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
