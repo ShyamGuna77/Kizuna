@@ -5,6 +5,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation"; 
 import { motion } from "motion/react";
 import { Heart, Menu, Users, MessageCircle, List } from "lucide-react";
+import { SignedIn, SignedOut, SignInButton, SignOutButton, UserButton } from "@clerk/nextjs";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -52,18 +53,29 @@ export default function Navbar() {
         </div>
 
         <div className="md:flex hidden gap-6">
-          <Link
-            href="/login"
-            className="text-sm font-bold border-2 border-black bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
-          >
-            Log In
-          </Link>
-          <Link
-            href="/signup"
-            className="text-sm font-bold border-2 border-black bg-pink-400 text-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
-          >
-            Sign Up
-          </Link>
+          <SignedOut>
+            <SignInButton mode="modal">
+              <button className="text-sm font-bold border-2 border-black bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+                Sign In
+              </button>
+            </SignInButton>
+          </SignedOut>
+
+          <SignedIn>
+            <UserButton
+              afterSignOutUrl="/"
+              appearance={{
+                elements: {
+                  avatarBox: "w-8 h-8", // small size user avatar
+                },
+              }}
+            />
+            <SignOutButton>
+              <button className="text-sm font-bold border-2 border-black bg-pink-400 text-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+                Sign Out
+              </button>
+            </SignOutButton>
+          </SignedIn>
         </div>
 
         <div className="md:hidden">
@@ -90,18 +102,29 @@ export default function Navbar() {
             <List className="h-5 w-5" />
             Lists
           </Link>
-          <Link
-            href="/login"
-            className="w-full text-center bg-white px-4 py-2 rounded-xl border-2 border-black font-semibold shadow-md"
-          >
-            Login
-          </Link>
-          <Link
-            href="/signup"
-            className="w-full text-center bg-pink-400 px-4 py-2 rounded-xl border-2 border-black font-semibold shadow-md text-white"
-          >
-            Sign Up
-          </Link>
+          <SignedOut>
+            <SignInButton mode="modal">
+              <button className="text-sm font-bold border-2 border-black bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+                Sign In
+              </button>
+            </SignInButton>
+          </SignedOut>
+
+          <SignedIn>
+            <UserButton
+              afterSignOutUrl="/"
+              appearance={{
+                elements: {
+                  avatarBox: "w-8 h-8", // small size user avatar
+                },
+              }}
+            />
+            <SignOutButton>
+              <button className="text-sm font-bold border-2 border-black bg-pink-400 text-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+                Sign Out
+              </button>
+            </SignOutButton>
+          </SignedIn>
         </div>
       )}
     </div>
